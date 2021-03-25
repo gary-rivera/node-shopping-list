@@ -1,16 +1,13 @@
 const express = require('express');
-const app = express();
 
+const app = express();
 const itemRoutes = require('./items'); 
+const { NotFoundError } = require("./expressError");
+
+// app.use(middleware.logger)
 const middleware = require('./middleware'); 
 
 app.use(express.json())
-
-const { NotFoundError, BadRequestError } = require("./expressError");
-
-
-// app.use(middleware.logger)
-
 //all requests to items goes to 
 app.use('/items', itemRoutes)
 
